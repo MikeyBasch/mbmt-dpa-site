@@ -200,6 +200,14 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
 .reviews .sub{color:var(--mute); margin:0 0 26px; font-family:"Montserrat";}
 .review-embed{max-width:780px; margin:0 auto; min-height:160px; background:#fff; border:1px dashed var(--line); border-radius:var(--radius); display:grid; place-items:center; padding:34px; color:var(--mute); font-family:"Montserrat";}
 .stars{color:var(--gold-deep); font-size:24px; letter-spacing:3px;}
+.testi-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:16px;}
+.testi{background:#fff; border:1px solid var(--line); border-left:4px solid var(--gold); border-radius:var(--radius); padding:22px; margin:0; box-shadow:var(--shadow); display:flex; flex-direction:column; gap:11px; text-align:left;}
+.testi .stars{font-size:17px; letter-spacing:2px;}
+.testi blockquote{margin:0; font-family:"Montserrat"; font-size:14.5px; line-height:1.58; color:var(--ink);}
+.testi figcaption{font-family:"Rift","Oswald",sans-serif; text-transform:uppercase; letter-spacing:.03em; color:var(--blue); font-weight:600; font-size:15px; margin-top:auto; padding-top:4px;}
+.testi figcaption span{display:block; text-transform:none; letter-spacing:0; font-family:"Montserrat"; font-weight:400; font-size:11.5px; color:var(--mute); margin-top:3px;}
+@media(max-width:900px){ .testi-grid{grid-template-columns:1fr 1fr;} }
+@media(max-width:600px){ .testi-grid{grid-template-columns:1fr;} }
 
 /* ====================  LEAD FORM  ==================== */
 .lead{background:var(--blue); color:#fff;}
@@ -360,20 +368,46 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
     <div class="wrap">
       <span class="eyebrow">Trusted by Maryland buyers</span>
       <h2>What clients say</h2>
-      <p class="sub">Real reviews from my Google Business Profile.</p>
-      <div class="review-embed" id="reviewEmbed">
-        <div>
+      <p class="sub">A few words from buyers I've helped across Maryland. Read them all on Google.</p>
+      <div class="testi-grid">
+        <figure class="testi">
           <div class="stars">★★★★★</div>
-          <p style="margin:12px 0 18px;"><strong>Hear from buyers I've helped across Maryland.</strong></p>
-          <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
-            <a class="btn btn--red" href="https://g.page/MikeBasch" target="_blank" rel="noopener">Read reviews on Google</a>
-          </div>
-        </div>
+          <blockquote>Mike is a saint! He made my first home buying experience very easy and breezy. Always available to ease my mind and help me through all aspects of my journey. Highly recommend!</blockquote>
+          <figcaption>Tracy C. <span>via Google</span></figcaption>
+        </figure>
+        <figure class="testi">
+          <div class="stars">★★★★★</div>
+          <blockquote>Mike recently helped us sell our old house and went the extra mile to help get us our dream home in a very competitive race. He is incredibly responsive and knowledgeable, and I truly felt he had our best interests at heart.</blockquote>
+          <figcaption>Ted R. <span>via Google</span></figcaption>
+        </figure>
+        <figure class="testi">
+          <div class="stars">★★★★★</div>
+          <blockquote>As a first-time homebuyer I really benefited from the knowledge and professionalism that came with Mikey's entire team. I can't speak enough on how easy they made the entire process. Highly recommend!</blockquote>
+          <figcaption>Will K. <span>via Google</span></figcaption>
+        </figure>
+        <figure class="testi">
+          <div class="stars">★★★★★</div>
+          <blockquote>Michael Basch is the best example of what every lender should embody. Client first, solution based, market expert. I have worked with Mike on countless home loans and refinances. His integrity and follow through is best in class.</blockquote>
+          <figcaption>Justin M. <span>via Google</span></figcaption>
+        </figure>
+        <figure class="testi">
+          <div class="stars">★★★★★</div>
+          <blockquote>Michael is an exceptional loan officer. Always willing to educate you about the steps to securing a mortgage, interest rates, and types of loans. He helped me lock in my home loan at a good interest rate. I highly recommend him!</blockquote>
+          <figcaption>Jenene S. <span>via Google</span></figcaption>
+        </figure>
+        <figure class="testi">
+          <div class="stars">★★★★★</div>
+          <blockquote>I started working with Michael a full year prior to closing. He offered a competitive rate and helped tailor my loan to my financial situation. His attention to detail and proactive communication made a significant difference in reducing stress.</blockquote>
+          <figcaption>Aisha C. <span>via Google</span></figcaption>
+        </figure>
+      </div>
+      <div style="text-align:center; margin-top:30px;">
+        <a class="btn btn--red" href="https://g.page/MikeBasch" target="_blank" rel="noopener">Read reviews on Google</a>
       </div>
     </div>
   </section>
 
-  <!-- ====================  LEAD FORM  ==================== -->
+
   <section class="section lead" id="contact">
     <div class="wrap lead__grid">
       <div>
@@ -806,7 +840,7 @@ const COUNTIES = [
     if(activeCounty) document.getElementById('programs').scrollIntoView({behavior:'smooth'});
   });
 
-  // "All programs" — clear any county filter so the full list shows, then scroll
+  // "All programs": clear any county filter so the full list shows, then scroll
   document.querySelectorAll('a[href="#programs"]').forEach(a=>{
     a.addEventListener('click', ()=>{
       activeCounty = "";
