@@ -6,7 +6,7 @@
 <meta name="color-scheme" content="light">
 
 <!-- ============================================================= -->
-<!--  SEO — edit the text inside these tags to tune search results -->
+<!--  SEO: edit the text inside these tags to tune search results -->
 <!-- ============================================================= -->
 <title>Maryland Down Payment Assistance Programs | Mike Basch Mortgage Team</title>
 <meta name="description" content="A complete, county-by-county guide to down payment assistance and homebuyer grant programs across Maryland. Find help in your county and talk to Mike Basch.">
@@ -67,7 +67,11 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
 /* ====================  NAV  ==================== */
 .nav{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line);}
 .nav__inner{display:flex; align-items:center; justify-content:space-between; height:74px; gap:18px;}
-.nav__logo img{height:46px; width:auto;}
+.nav__brands{display:flex; align-items:center; gap:14px; min-width:0;}
+.nav__logo{display:flex; flex:none;}
+.nav__logo img{height:40px; width:auto;}
+.nav__divider{width:1px; height:34px; background:var(--line); flex:none;}
+.nav__cobrand{height:40px; width:auto; flex:none;}
 .nav__links{display:flex; gap:26px; align-items:center;}
 .nav__links a{color:var(--blue); font-size:15px; font-weight:600; font-family:"Montserrat";}
 .nav__links a:hover{color:var(--red); text-decoration:none;}
@@ -80,7 +84,8 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
 .btn--ghost:hover{border-color:var(--blue); text-decoration:none;}
 .btn--gold{background:var(--gold); color:var(--blue);}
 .btn--gold:hover{background:var(--gold-deep); color:var(--blue); text-decoration:none; transform:translateY(-1px);}
-@media(max-width:880px){ .nav__links{display:none;} }
+@media(max-width:880px){ .nav__links{display:none;} .nav__inner{gap:10px;} .nav__brands{gap:9px;} .nav__logo img,.nav__cobrand{height:31px;} .nav__divider{height:26px;} }
+@media(max-width:430px){ .nav__logo img,.nav__cobrand{height:25px;} .nav__brands{gap:7px;} }
 
 /* ====================  HERO  ==================== */
 .hero{padding:60px 0 34px;}
@@ -93,9 +98,9 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
 .hero__cta{display:flex; gap:13px; flex-wrap:wrap;}
 .trust{display:flex; gap:22px; flex-wrap:wrap; margin-top:26px; color:var(--mute); font-size:13.5px; align-items:center; font-family:"Montserrat";}
 .trust span{display:inline-flex; gap:8px; align-items:center;}
-.hero__badge{background:var(--gold); border-radius:24px; padding:34px; display:grid; place-items:center; box-shadow:var(--shadow-lg);}
-.hero__badge img{width:100%; max-width:330px;}
-@media(max-width:880px){ .hero__grid{grid-template-columns:1fr; gap:26px;} .hero__badge{max-width:360px; margin:0 auto;} }
+.hero__badge{background:var(--gold); border-radius:24px; padding:10px; box-shadow:var(--shadow-lg);}
+.hero__badge img{width:100%; height:auto; display:block; border-radius:16px;}
+@media(max-width:880px){ .hero__grid{grid-template-columns:1fr; gap:26px;} .hero__badge{max-width:420px; margin:0 auto;} }
 
 /* ====================  MAP  ==================== */
 .map-section{background:var(--blue); color:#fff;}
@@ -112,6 +117,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
 .geo:hover{fill:#AF1E3C;}
 .geo--unknown:hover{fill:#5b6570;}
 .geo.is-selected{fill:#AF1E3C; stroke:#fff; stroke-width:2;}
+.geo-label{font-family:"Oswald","Rift",sans-serif; font-size:16px; font-weight:600; fill:#081828; text-anchor:middle; dominant-baseline:central; text-transform:uppercase; letter-spacing:.02em; paint-order:stroke; stroke:#fff; stroke-width:2.6px; stroke-linejoin:round; pointer-events:none;}
 .map-legend{display:flex; gap:18px; flex-wrap:wrap; margin-top:14px; font-size:12.5px; color:#aebfc8; font-family:"Montserrat";}
 .map-legend span{display:inline-flex; align-items:center; gap:7px;}
 .sw{width:14px; height:14px; border-radius:4px; display:inline-block; border:1px solid rgba(255,255,255,.3);}
@@ -140,7 +146,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
 .results-band h3::after{content:""; flex:1; height:2px; background:var(--line);}
 .results-band--sw h3{color:var(--red-deep);}
 .grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(322px,1fr)); gap:20px;}
-.card{background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow); display:flex; flex-direction:column; transition:transform .14s ease, box-shadow .14s ease;}
+.card{background:#fff; border:1px solid var(--line); border-left:4px solid var(--blue); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow); display:flex; flex-direction:column; transition:transform .14s ease, box-shadow .14s ease;}
 .card:hover{transform:translateY(-3px); box-shadow:var(--shadow-lg);}
 .card--sw{border-left:4px solid var(--gold);}
 .card__county{font-family:"Rift","Oswald"; font-size:12.5px; font-weight:600; color:var(--green-deep); text-transform:uppercase; letter-spacing:.09em;}
@@ -152,11 +158,13 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
 .tag--amount{background:#e7f1ea; color:#2C6B47;}
 .tag--sw{background:var(--gold); color:var(--blue);}
 .card p{font-size:14px; color:var(--mute); margin:0 0 16px; flex:1; font-family:"Montserrat";}
-.card__links{display:flex; gap:14px; flex-wrap:wrap; align-items:center; margin-top:auto; padding-top:14px; border-top:1px solid var(--line);}
-.card__links a, .card__links button{font-size:13.5px; font-weight:600; background:none; border:none; cursor:pointer; font-family:"Montserrat"; padding:0; display:inline-flex; align-items:center; gap:6px;}
-.link-official{color:var(--green-deep);}
+.card__links{display:flex; gap:10px 14px; flex-wrap:wrap; align-items:center; margin-top:auto; padding-top:14px; border-top:1px solid var(--line);}
+.card__links a{font-size:12.5px; font-weight:600; background:none; border:none; cursor:pointer; font-family:"Montserrat"; padding:0; display:inline-flex; align-items:center; gap:6px;}
+.link-official{color:var(--mute);}
+.link-official:hover{color:var(--blue);}
 .link-video{color:var(--red-deep);}
-.link-qualify{color:var(--blue); margin-left:auto; font-family:"Rift","Oswald"; text-transform:uppercase; letter-spacing:.03em;}
+.link-qualify{margin-left:auto; background:var(--red); color:#fff; border:none; cursor:pointer; padding:9px 16px; border-radius:999px; font-family:"Rift","Oswald"; text-transform:uppercase; letter-spacing:.03em; font-size:13px; display:inline-flex; align-items:center; gap:6px; transition:transform .12s ease, background .12s;}
+.link-qualify:hover{background:var(--red-deep); transform:translateY(-1px);}
 .cta-strip{margin-top:30px; background:var(--blue); border-radius:18px; padding:26px 30px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;}
 .cta-strip p{color:#fff; font-family:"Rift","Oswald"; text-transform:uppercase; letter-spacing:.02em; font-size:20px; margin:0;}
 .cta-strip span{color:#aebfc8; font-family:"Montserrat"; text-transform:none; letter-spacing:0; font-size:14px; display:block; margin-top:4px;}
@@ -239,9 +247,13 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
 <!-- ====================  NAV  ==================== -->
 <header class="nav">
   <div class="wrap nav__inner">
-    <a class="nav__logo" href="#top" aria-label="Mike Basch Mortgage Team home">
-      <img src="logo-horizontal.png" alt="Mike Basch Mortgage Team">
-    </a>
+    <div class="nav__brands">
+      <a class="nav__logo" href="#top" aria-label="Mike Basch Mortgage Team home">
+        <img src="logo-horizontal.png" alt="Mike Basch Mortgage Team">
+      </a>
+      <span class="nav__divider" aria-hidden="true"></span>
+      <img class="nav__cobrand" src="logo-firsthome.png" alt="First Home Mortgage">
+    </div>
     <nav class="nav__links">
       <a href="#map">Find by county</a>
       <a href="#programs">All programs</a>
@@ -260,7 +272,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
       <div>
         <div class="hero__motto eyebrow">Helping you rock the home buying process</div>
         <h1>Find the money to buy your <span class="u">Maryland home</span>.</h1>
-        <p class="hero__lead">Maryland has dozens of down payment and grant programs — most buyers never hear about them. Pick your county and see what you qualify for.</p>
+        <p class="hero__lead">Maryland has dozens of down payment and grant programs, and most buyers never hear about them. Pick your county and see what you may qualify for.</p>
         <div class="hero__cta">
           <a href="#map" class="btn btn--red">Find programs in my county</a>
           <a href="#contact" class="btn btn--ghost">Talk to Mike</a>
@@ -271,7 +283,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
         </div>
       </div>
       <div class="hero__badge">
-        <img src="logo-circle.png" alt="Mike Basch Mortgage Team logo">
+        <img src="hero-photo.jpg" alt="Michael Basch with happy clients at their home closing, holding the Mike Basch Mortgage Team guitar sign">
       </div>
     </div>
   </section>
@@ -281,11 +293,11 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
     <div class="wrap">
       <span class="eyebrow">Step 1</span>
       <h2>Tap your county</h2>
-      <p class="sub">Select where you're buying on the map of Maryland. We'll show the local programs for that county — plus the statewide options every buyer can use.</p>
+      <p class="sub">Select where you're buying on the map of Maryland. We'll show the local programs for that county, plus the statewide options every buyer can use.</p>
       <div class="map-layout">
         <div>
           <div class="map-stage">
-            <svg id="mdMap" role="group" aria-label="Map of Maryland counties — select a county"></svg>
+            <svg id="mdMap" role="group" aria-label="Map of Maryland counties; select a county"></svg>
             <div id="mapStatus">Loading the map of Maryland…</div>
           </div>
           <div class="map-legend">
@@ -296,7 +308,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
         </div>
         <div class="map-side">
           <h3>Prefer a list?</h3>
-          <p>Choose your county here — it does the same thing as the map.</p>
+          <p>Choose your county here. It does the same thing as the map.</p>
           <select class="county-select" id="countySelect" aria-label="Choose your county">
             <option value="">Choose your county…</option>
           </select>
@@ -314,11 +326,6 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
         <h2>Down payment programs</h2>
       </div>
       <p id="resultMeta"></p>
-      <div class="toolbar">
-        <input type="search" id="searchInput" placeholder="Search programs (e.g. SELP, grant, Baltimore)…" aria-label="Search programs">
-        <select id="typeFilter" aria-label="Filter by program type"><option value="">All types</option></select>
-        <button class="clear-btn" id="clearBtn" type="button">Clear filters</button>
-      </div>
       <div id="programResults"></div>
       <div class="cta-strip">
         <p>Not sure which ones you qualify for?<span>Get a free, no-obligation personal analysis from Mike.</span></p>
@@ -327,31 +334,23 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
     </div>
   </section>
 
-  <!-- ====================  STATEWIDE FEATURE BAND  ==================== -->
-  <section class="section statewide" id="statewide">
-    <div class="wrap">
-      <span class="eyebrow">Available anywhere in Maryland</span>
-      <h2>Statewide &amp; lender programs</h2>
-      <p class="sub">These don't depend on your county — they're available to eligible buyers across the state, including a few exclusive to the lenders Mike works with. They also show up under every county above.</p>
-      <div class="feat-grid" id="statewideGrid"></div>
-    </div>
-  </section>
-
   <!-- ====================  ABOUT  ==================== -->
   <section class="section section--gray about" id="about">
     <div class="wrap about__grid">
-      <div class="about__photo"><img src="mike-headshot.jpg" alt="Mike Basch, Loan Officer"></div>
+      <div class="about__photo"><img src="mike-headshot.jpg" alt="Michael Basch, Loan Officer"></div>
       <div>
-        <span class="eyebrow">Your guide</span>
-        <h2>Meet Mike Basch</h2>
-        <p>Mike is a Maryland loan officer who helps first-time and repeat buyers across the state find every dollar of assistance they're entitled to — then walks them all the way to the closing table. This site is the resource he wished existed: a single, plain-English map of what's out there, county by county.</p>
-        <p>Curious about a program, or want to know what you'd actually qualify for? Reach out — there's no cost to ask, and no obligation.</p>
+        <span class="eyebrow">Your personal guide</span>
+        <h2>Meet Michael Basch</h2>
+        <p>Michael prides himself on helping everyone he can find their way home. The challenge with down payment assistance is that these programs come wrapped in complex guidelines: income and asset limits, credit requirements, and property and location rules. The program that looks best on paper isn't always the best fit for your financing. Truthfully, even seasoned loan officers find them a lot to navigate.</p>
+        <p>That's exactly why a conversation beats a guess. The fastest, most accurate way to learn which programs you qualify for, and which one genuinely fits your situation, is a free, no-pressure consultation with Michael. You'll get a straight answer on where you stand and a clear plan for your options.</p>
+        <p>A Maryland native with nearly a decade as a licensed loan officer, hundreds of families served, and one of the highest-rated loan officers on Google, you're in about the best hands you'll find. Michael is with First Home Mortgage, the #1 lender in Maryland and the go-to lender for nearly every local assistance program.</p>
         <div class="creds">
-          <div class="cred"><b>NMLS #1721748</b>Licensed Loan Officer</div>
-          <div class="cred"><b>All 24</b>Maryland jurisdictions</div>
-          <div class="cred"><b>$0</b>Cost to ask a question</div>
+          <div class="cred"><b>~10 yrs</b>Licensed loan officer</div>
+          <div class="cred"><b>100s</b>Maryland families served</div>
+          <div class="cred"><b>Top-rated</b>Loan officer on Google</div>
         </div>
-        <a href="#contact" class="btn btn--red">Get my personalized options</a>
+        <p style="font-size:13px; color:var(--mute); margin:-2px 0 18px; font-family:'Montserrat';">Michael Basch · NMLS&nbsp;#1721748 &nbsp;·&nbsp; First Home Mortgage · NMLS&nbsp;#71603</p>
+        <a href="#contact" class="btn btn--red">Book my free consultation</a>
       </div>
     </div>
   </section>
@@ -368,7 +367,6 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
           <p style="margin:12px 0 18px;"><strong>Hear from buyers I've helped across Maryland.</strong></p>
           <div style="display:flex; gap:12px; flex-wrap:wrap; justify-content:center;">
             <a class="btn btn--red" href="https://g.page/MikeBasch" target="_blank" rel="noopener">Read reviews on Google</a>
-            <a class="btn btn--ghost" href="https://g.page/MikeBasch/review" target="_blank" rel="noopener">Leave a review</a>
           </div>
         </div>
       </div>
@@ -381,7 +379,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
       <div>
         <span class="eyebrow">No cost, no obligation</span>
         <h2>See what you qualify for</h2>
-        <p class="l">Tell Mike a little about your plans and he'll send back the specific programs you're likely eligible for — usually within one business day.</p>
+        <p class="l">Tell Mike a little about your plans and he'll send back the specific programs you're likely eligible for, usually within one business day.</p>
         <ul>
           <li>A personalized list of programs for your county</li>
           <li>A straight answer on what you'd actually qualify for</li>
@@ -407,7 +405,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
           <p class="form-note">Your information is only used to answer your question. It is never sold.</p>
         </form>
         <div class="form-success" id="formSuccess">
-          <div class="big">Thanks — you're all set!</div>
+          <div class="big">Thanks, you're all set!</div>
           <p style="color:var(--mute); font-family:Montserrat;">Mike will review your information and get back to you, usually within one business day.</p>
         </div>
       </div>
@@ -424,7 +422,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
     </div>
     <div class="footer__grid">
       <div>
-        <p style="max-width:30em;">A free, plain-English guide to down payment assistance across Maryland — built to help buyers find the help that's already out there.</p>
+        <p style="max-width:30em;">A free comprehensive guide to down payment assistance across Maryland, built to help buyers find the help that's already out there.</p>
         <span class="eho"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#bdccd3" stroke-width="2"><path d="M3 10l9-6 9 6"/><path d="M5 10v10h14V10"/></svg> Equal Housing Opportunity</span>
       </div>
       <div>
@@ -479,7 +477,7 @@ const PROGRAMS = [
 
   { county:"Baltimore County", name:"Settlement Expense Loan Program (SELP)", type:"Deferred loan", amount:"", summary:"Helps eligible Baltimore County buyers cover settlement and closing costs through a deferred loan.", link:"", video:"" },
   { county:"Baltimore County", name:"House Keys 4 Employees (HK4E)", type:"Employer match", amount:"", summary:"Matching funds for eligible employees buying in Baltimore County, paired with the Maryland Mortgage Program.", link:"", video:"" },
-  { county:"Baltimore County", name:"LifeBridge Health — Live Near Your Work", type:"Employer program", amount:"", summary:"Employer-assisted housing benefit for eligible LifeBridge Health employees buying near work.", link:"", video:"" },
+  { county:"Baltimore County", name:"LifeBridge Health: Live Near Your Work", type:"Employer program", amount:"", summary:"Employer-assisted housing benefit for eligible LifeBridge Health employees buying near work.", link:"", video:"" },
 
   { county:"Baltimore City", name:"First-Time Homebuyers Incentive (FTHIP)", type:"Grant", amount:"", summary:"Incentive for first-time buyers purchasing a home in Baltimore City.", link:"https://livebaltimore.com/buy/affording-a-home/down-payment-closing-costs/", video:"" },
   { county:"Baltimore City", name:"Live Near Your Work", type:"Employer match", amount:"", summary:"Employer-plus-city matching grants for buyers purchasing near a participating workplace.", link:"https://livebaltimore.com/buy/affording-a-home/down-payment-closing-costs/", video:"" },
@@ -505,7 +503,7 @@ const PROGRAMS = [
   { county:"Frederick", name:"City of Frederick Homebuyer Assistance Program", type:"Deferred loan", amount:"", summary:"Down payment and closing-cost help for buyers purchasing within the City of Frederick.", link:"", video:"" },
   { county:"Frederick", name:"Workforce Housing / Essential Worker Programs", type:"Workforce", amount:"", summary:"Assistance targeted to essential workers and the local workforce buying in Frederick County.", link:"", video:"" },
   { county:"Frederick", name:"House Keys 4 Employees (HK4E)", type:"Employer match", amount:"", summary:"Matching down payment funds for eligible employees, paired with the Maryland Mortgage Program.", link:"", video:"" },
-  { county:"Frederick", name:"United Way Prosperity Program — Pathway to Homeownership", type:"Counseling", amount:"", summary:"Homeownership readiness and savings pathway offered through the local United Way.", link:"", video:"" },
+  { county:"Frederick", name:"United Way Prosperity Program: Pathway to Homeownership", type:"Counseling", amount:"", summary:"Homeownership readiness and savings pathway offered through the local United Way.", link:"", video:"" },
   { county:"Frederick", name:"Moderately Priced Dwelling Unit (MPDU) Program", type:"Affordable units", amount:"", summary:"Access to below-market-price homes for income-qualified buyers in Frederick County.", link:"", video:"" },
 
   { county:"Harford", name:"Harford County Settlement Expense Loan Program (SELP)", type:"Deferred loan", amount:"", summary:"Helps eligible Harford County buyers with closing costs through a deferred loan.", link:"https://www.harfordcountymd.gov/3663/Settlement-Expense-Loan-Program", video:"" },
@@ -533,12 +531,12 @@ const PROGRAMS = [
   { county:"Talbot", name:"Housing Commission of Talbot County Partner Match", type:"Employer match", amount:"", summary:"Matching assistance for eligible Talbot County buyers through the county Housing Commission.", link:"", video:"" },
 
   { county:"Washington", name:"Hagerstown Homeownership Initiative (HHI)", type:"Grant", amount:"", summary:"Homeownership assistance for buyers in the City of Hagerstown.", link:"https://www.hagerstownmd.org/1562/Hagerstown-Homeownership-Initiative", video:"" },
-  { county:"Washington", name:"Hagerstown Home Store — CPIP Assistance", type:"Assistance", amount:"", summary:"Closing-cost and purchase-incentive assistance through the Hagerstown Home Store.", link:"https://hagerstownhomestore.org/homebuyer/", video:"" },
-  { county:"Washington", name:"City of Hagerstown — CDBG Homeownership Program", type:"Grant", amount:"", summary:"CDBG-funded homeownership assistance for income-eligible Hagerstown buyers.", link:"https://www.hagerstownmd.org/1818/Homeownership-Program", video:"" },
+  { county:"Washington", name:"Hagerstown Home Store: CPIP Assistance", type:"Assistance", amount:"", summary:"Closing-cost and purchase-incentive assistance through the Hagerstown Home Store.", link:"https://hagerstownhomestore.org/homebuyer/", video:"" },
+  { county:"Washington", name:"City of Hagerstown: CDBG Homeownership Program", type:"Grant", amount:"", summary:"CDBG-funded homeownership assistance for income-eligible Hagerstown buyers.", link:"https://www.hagerstownmd.org/1818/Homeownership-Program", video:"" },
 
   { county:"Wicomico", name:"SNHS Wicomico Closing Cost Loan Program", type:"Deferred loan", amount:"", summary:"Closing-cost assistance loan for Wicomico County buyers through Salisbury Neighborhood Housing Services.", link:"https://www.salisburynhs.org/wicomico_clsng_loan/", video:"" },
   { county:"Wicomico", name:"SNHS Tandem Loan (eliminates PMI)", type:"Second-lien loan", amount:"", summary:"A companion loan through SNHS structured to eliminate private mortgage insurance (PMI).", link:"https://www.salisburynhs.org/products-and-services/home-purchase-loans/", video:"" },
-  { county:"Wicomico", name:"Wicomico County — CDBG Housing Rehabilitation Program", type:"Rehab", amount:"", summary:"CDBG-funded housing rehabilitation assistance for income-eligible Wicomico County homeowners.", link:"", video:"" },
+  { county:"Wicomico", name:"Wicomico County: CDBG Housing Rehabilitation Program", type:"Rehab", amount:"", summary:"CDBG-funded housing rehabilitation assistance for income-eligible Wicomico County homeowners.", link:"", video:"" },
 
   { county:"Worcester", name:"SNHS Worcester Closing Cost Loan", type:"Deferred loan", amount:"", summary:"Closing-cost assistance loan for Worcester County buyers through Salisbury Neighborhood Housing Services.", link:"https://www.salisburynhs.org/worcester_clsng_loan/", video:"" }
 ];
@@ -549,27 +547,29 @@ const PROGRAMS = [
    ===================================================================== */
 const STATEWIDE = [
   { name:"Maryland Mortgage Program (MMP)", amount:"", type:"State program", summary:"Maryland's flagship homebuying program: 30-year fixed-rate mortgages paired with down payment assistance for eligible buyers statewide.", link:"https://mmp.maryland.gov/", video:"", star:false },
-  { name:"First Home Dream Grant", amount:"$3,000 fully forgivable", type:"Forgivable grant", summary:"A First Home Mortgage exclusive: $3,000 in fully forgivable grant funds toward your purchase. Ask Mike if you qualify.", link:"", video:"", star:true },
-  { name:"First Home 100+", amount:"", type:"Lender program", summary:"A First Home Mortgage product built to stretch buyer assistance and financing flexibility further. Ask Mike for current details.", link:"", video:"", star:false },
+  { name:"Maryland SmartBuy 3.0", amount:"", type:"State program", summary:"Eligible buyers can eliminate up to $25,000 in student debt, while receiving an additional $6,000 toward down payment and closing costs!", link:"https://www.youtube.com/watch?v=82KhV9i6qCk", video:"", star:false },
+  { name:"First Home Dream Grant", amount:"$3,000 fully forgivable", type:"Forgivable grant", summary:"A First Home Mortgage exclusive: $3,000 in fully forgivable grant funds toward your purchase. Ask Mike if you qualify.", link:"https://firsthome.com/introducing-first-homes-dream-program/", video:"", star:true },
+  { name:"First Home One Grant", amount:"$5,500 fully forgivable", type:"Forgivable grant", summary:"A First Home Mortgage exclusive: $5,500 in fully forgivable grant funds toward your purchase. Ask Mike if you qualify.", link:"https://firsthome.com/introducing-the-first-home-one-program-paving-the-way-for-affordable-homeownership/", video:"", star:true },
+  { name:"First Home 100+", amount:"", type:"Lender program", summary:"A First Home Mortgage product built to stretch buyer assistance and financing flexibility further. Ask Mike for current details.", link:"https://firsthome.com/first-home-100-100-more-buying-power-less-stress/", video:"", star:false },
   { name:"Chenoa Fund", amount:"", type:"Down payment assistance", summary:"Down payment assistance (forgivable or repayable second lien) available alongside FHA loans through the CBC Mortgage Agency.", link:"", video:"", star:false },
   { name:"FHLB Grant Funds", amount:"", type:"Grant", summary:"Federal Home Loan Bank down payment and closing-cost grant funds offered through participating lenders to income-eligible buyers.", link:"", video:"", star:false }
 ];
 
 /* =====================================================================
-   COUNTIES — drives the dropdowns and groups the county list.
+   COUNTIES: drives the dropdowns and groups the county list.
    ===================================================================== */
 const COUNTIES = [
-  { name:"Garrett", region:"Western Maryland" }, { name:"Allegany", region:"Western Maryland" }, { name:"Washington", region:"Western Maryland" },
   { name:"Frederick", region:"Central Maryland" }, { name:"Carroll", region:"Central Maryland" }, { name:"Baltimore County", region:"Central Maryland" },
   { name:"Baltimore City", region:"Central Maryland" }, { name:"Harford", region:"Central Maryland" }, { name:"Howard", region:"Central Maryland" }, { name:"Anne Arundel", region:"Central Maryland" },
   { name:"Montgomery", region:"Capital Region" }, { name:"Prince George's", region:"Capital Region" },
   { name:"Calvert", region:"Southern Maryland" }, { name:"Charles", region:"Southern Maryland" }, { name:"St. Mary's", region:"Southern Maryland" },
   { name:"Cecil", region:"Eastern Shore" }, { name:"Kent", region:"Eastern Shore" }, { name:"Queen Anne's", region:"Eastern Shore" }, { name:"Caroline", region:"Eastern Shore" },
-  { name:"Talbot", region:"Eastern Shore" }, { name:"Dorchester", region:"Eastern Shore" }, { name:"Wicomico", region:"Eastern Shore" }, { name:"Somerset", region:"Eastern Shore" }, { name:"Worcester", region:"Eastern Shore" }
+  { name:"Talbot", region:"Eastern Shore" }, { name:"Dorchester", region:"Eastern Shore" }, { name:"Wicomico", region:"Eastern Shore" }, { name:"Somerset", region:"Eastern Shore" }, { name:"Worcester", region:"Eastern Shore" },
+  { name:"Garrett", region:"Western Maryland" }, { name:"Allegany", region:"Western Maryland" }, { name:"Washington", region:"Western Maryland" }
 ];
 
 /* =====================================================================
-   ⬇  SITE LOGIC — you don't need to edit anything past this point.
+   ⬇  SITE LOGIC: you don't need to edit anything past this point.
    ===================================================================== */
 (function(){
   const NS="http://www.w3.org/2000/svg";
@@ -610,7 +610,7 @@ const COUNTIES = [
     .catch(()=>{
       fetch(MAP_CDN).then(r=>{ if(!r.ok) throw new Error('cdn'); return r.json(); })
         .then(drawFrom)
-        .catch(()=>{ mapStatus.textContent = "The map couldn't load right now — use the county menu on the right to pick your county."; });
+        .catch(()=>{ mapStatus.textContent = "The map couldn't load right now. Use the county menu on the right to pick your county."; });
     });
 
   function eachCoord(feats, fn){
@@ -625,24 +625,31 @@ const COUNTIES = [
     let minLat=90,maxLat=-90;
     eachCoord(feats,(lon,lat)=>{ if(lat<minLat)minLat=lat; if(lat>maxLat)maxLat=lat; });
     const kx = Math.cos((minLat+maxLat)/2*Math.PI/180);
-    const proj = (lon,lat)=>[lon*kx, -lat];
     let minX=1e9,minY=1e9,maxX=-1e9,maxY=-1e9;
     eachCoord(feats,(lon,lat)=>{ const x=lon*kx, y=-lat; if(x<minX)minX=x; if(x>maxX)maxX=x; if(y<minY)minY=y; if(y>maxY)maxY=y; });
     const W=1000, pad=14;
     const s=(W-2*pad)/(maxX-minX);
     const H=(maxY-minY)*s+2*pad;
     svg.setAttribute('viewBox',`0 0 ${W} ${Math.round(H)}`);
-    const tx=x=>((x-minX)*s+pad).toFixed(1), ty=y=>((y-minY)*s+pad).toFixed(1);
+    const TX=x=>(x-minX)*s+pad, TY=y=>(y-minY)*s+pad;          // numeric viewBox units
+    const fx=x=>TX(x).toFixed(1), fy=y=>TY(y).toFixed(1);       // path-string coords
 
+    const labelData = [];
     feats.forEach(f=>{
       const name = canon(featName(f));
       const known = COUNTYSET.has(name);
       const g=f.geometry; if(!g) return;
       const polys = g.type==='MultiPolygon'? g.coordinates : [g.coordinates];
-      let d="";
-      polys.forEach(poly=>poly.forEach(ring=>{
-        ring.forEach((pt,i)=>{ const px=pt[0]*kx, py=-pt[1]; d += (i?'L':'M')+tx(px)+' '+ty(py)+' '; });
+      let d="", best=null;   // best = largest outer ring (the county's main body)
+      polys.forEach(poly=>poly.forEach((ring,ri)=>{
+        ring.forEach((pt,i)=>{ d += (i?'L':'M')+fx(pt[0]*kx)+' '+fy(-pt[1])+' '; });
         d+="Z ";
+        if(ri===0){
+          const pts=ring.map(pt=>[TX(pt[0]*kx), TY(-pt[1])]);
+          let A=0; for(let i=0;i<pts.length;i++){const a=pts[i],b=pts[(i+1)%pts.length]; A+=a[0]*b[1]-b[0]*a[1];}
+          A=Math.abs(A/2);
+          if(!best||A>best.area) best={pts,area:A};
+        }
       }));
       const path=document.createElementNS(NS,'path');
       path.setAttribute('d',d);
@@ -653,9 +660,48 @@ const COUNTIES = [
         const t=document.createElementNS(NS,'title'); t.textContent=name; path.appendChild(t);
         path.addEventListener('click',()=>selectCounty(name));
         path.addEventListener('keydown',e=>{ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); selectCounty(name);} });
+        if(best){
+          const pts=best.pts; let A=0,cx=0,cy=0;
+          for(let i=0;i<pts.length;i++){const a=pts[i],b=pts[(i+1)%pts.length]; const cr=a[0]*b[1]-b[0]*a[1]; A+=cr; cx+=(a[0]+b[0])*cr; cy+=(a[1]+b[1])*cr;}
+          A*=0.5;
+          let bx0=1e9,by0=1e9,bx1=-1e9,by1=-1e9; pts.forEach(p=>{bx0=Math.min(bx0,p[0]);by0=Math.min(by0,p[1]);bx1=Math.max(bx1,p[0]);by1=Math.max(by1,p[1]);});
+          if(Math.abs(A)<1e-6){ cx=(bx0+bx1)/2; cy=(by0+by1)/2; } else { cx/=(6*A); cy/=(6*A); }
+          labelData.push({name, cx, cy, bw:bx1-bx0, bh:by1-by0, area:best.area});
+        }
       }
       svg.appendChild(path);
     });
+
+    placeLabels(labelData);
+  }
+
+  // Adaptive county labels: full name where it fits, else abbreviation, else skipped
+  // (skipped counties keep their hover name + the dropdown). No overlaps.
+  function placeLabels(items){
+    const ABBR={"Anne Arundel":"AA","Baltimore City":"B. City","Baltimore County":"Balt. Co.",
+      "Prince George's":"PG","Queen Anne's":"QA","Montgomery":"Montg.","Washington":"Wash.",
+      "Dorchester":"Dorch.","Frederick":"Fred.","Allegany":"Alleg.","Garrett":"Garr.",
+      "Carroll":"Carr.","Harford":"Harf.","Howard":"How.","Charles":"Chas.","Calvert":"Calv.",
+      "Cecil":"Cecil","Kent":"Kent","Caroline":"Caro.","Talbot":"Talb.","Somerset":"Som.",
+      "Wicomico":"Wic.","Worcester":"Worc.","St. Mary's":"St. M."};
+    const FS=16, placed=[];
+    const grp=document.createElementNS(NS,'g'); grp.setAttribute('class','geo-labels');
+    const hit=(a,b)=>!(a.x+a.w/2<b.x-b.w/2||a.x-a.w/2>b.x+b.w/2||a.y+a.h/2<b.y-b.h/2||a.y-a.h/2>b.y+b.h/2);
+    items.sort((a,b)=>b.area-a.area).forEach(it=>{
+      const cands=[...new Set([it.name, ABBR[it.name]||it.name])];
+      for(const text of cands){
+        const w=text.length*FS*0.56+6, h=FS+4, box={x:it.cx,y:it.cy,w,h};
+        if(w>it.bw*0.92 || h>it.bh*0.8) continue;          // must fit inside the county
+        if(placed.some(pb=>hit(box,pb))) continue;          // and not overlap another label
+        placed.push(box);
+        const t=document.createElementNS(NS,'text');
+        t.setAttribute('x',it.cx.toFixed(1)); t.setAttribute('y',it.cy.toFixed(1));
+        t.setAttribute('class','geo-label'); t.textContent=text;
+        grp.appendChild(t);
+        break;
+      }
+    });
+    svg.appendChild(grp);
   }
 
   /* ---------- dropdowns + region list ---------- */
@@ -674,33 +720,19 @@ const COUNTIES = [
     });
   });
 
-  /* ---------- type filter (from local + statewide) ---------- */
-  const typeFilter = document.getElementById('typeFilter');
-  [...new Set([...PROGRAMS.map(p=>p.type), ...STATEWIDE.map(p=>p.type)])].sort().forEach(t=>typeFilter.add(new Option(t,t)));
-
-  /* ---------- statewide feature band ---------- */
-  document.getElementById('statewideGrid').innerHTML = STATEWIDE.map(p=>`
-    <div class="feat ${p.star?'feat--star':''}">
-      ${p.star?'<div class="feat__ribbon">Exclusive</div>':''}
-      <h3>${esc(p.name)}</h3>
-      ${p.amount?`<div class="amt">${esc(p.amount)}</div>`:''}
-      <p>${esc(p.summary)}</p>
-    </div>`).join('');
-
   /* ---------- program cards ---------- */
   const results = document.getElementById('programResults');
   const resultMeta = document.getElementById('resultMeta');
-  const searchInput = document.getElementById('searchInput');
   const tagClass = t => /forgiv/i.test(t) ? 'tag tag--forgive' : 'tag';
 
   function localCard(p){
     return `<article class="card">
       <span class="card__county">${esc(p.county)}</span>
       <h3>${esc(p.name)}</h3>
-      <div class="card__tags"><span class="${tagClass(p.type)}">${esc(p.type)}</span>${p.amount?`<span class="tag tag--amount">${esc(p.amount)}</span>`:''}</div>
+      ${p.amount?`<div class="card__tags"><span class="tag tag--amount">${esc(p.amount)}</span></div>`:''}
       <p>${esc(p.summary)}</p>
       <div class="card__links">
-        ${p.link?`<a class="link-official" href="${esc(p.link)}" target="_blank" rel="noopener">Official site ↗</a>`:''}
+        ${p.link?`<a class="link-official" href="${esc(p.link)}" target="_blank" rel="noopener">Program details ↗</a>`:''}
         ${p.video?`<a class="link-video" href="${esc(p.video)}" target="_blank" rel="noopener">▶ Watch Mike's video</a>`:''}
         <button class="link-qualify" type="button" data-prog="${esc(p.name)}">See if I qualify →</button>
       </div></article>`;
@@ -712,24 +744,30 @@ const COUNTIES = [
       <div class="card__tags"><span class="tag tag--sw">${esc(p.type)}</span>${p.amount?`<span class="tag tag--amount">${esc(p.amount)}</span>`:''}</div>
       <p>${esc(p.summary)}</p>
       <div class="card__links">
-        ${p.link?`<a class="link-official" href="${esc(p.link)}" target="_blank" rel="noopener">Official site ↗</a>`:''}
+        ${p.link?`<a class="link-official" href="${esc(p.link)}" target="_blank" rel="noopener">Program details ↗</a>`:''}
         ${p.video?`<a class="link-video" href="${esc(p.video)}" target="_blank" rel="noopener">▶ Watch Mike's video</a>`:''}
         <button class="link-qualify" type="button" data-prog="${esc(p.name)}">See if I qualify →</button>
       </div></article>`;
   }
 
+  function wireQualify(scope){
+    scope.querySelectorAll('.link-qualify').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        document.getElementById('programField').value = btn.dataset.prog;
+        if(activeCounty) document.getElementById('lf-county').value = activeCounty;
+        document.getElementById('contact').scrollIntoView({behavior:'smooth'});
+      });
+    });
+  }
+
   function render(){
-    const q = searchInput.value.trim().toLowerCase();
-    const t = typeFilter.value;
-    const matchLocal = p => (!activeCounty||p.county===activeCounty) && (!t||p.type===t) && (!q||(p.name+' '+p.county+' '+p.summary+' '+p.type).toLowerCase().includes(q));
-    const matchSw = p => (!t||p.type===t) && (!q||(p.name+' '+p.summary+' '+p.type).toLowerCase().includes(q));
-    const local = PROGRAMS.filter(matchLocal);
-    const sw = STATEWIDE.filter(matchSw);
+    const local = PROGRAMS.filter(p => !activeCounty || p.county===activeCounty);
+    const sw = STATEWIDE.slice();
 
     if(activeCounty){
       resultMeta.innerHTML = `Showing <b>${local.length}</b> local program${local.length!==1?'s':''} in <b>${esc(activeCounty)}</b>, plus <b>${sw.length}</b> statewide option${sw.length!==1?'s':''} you may also qualify for.`;
     } else {
-      resultMeta.innerHTML = `Showing <b>${local.length}</b> local program${local.length!==1?'s':''} across Maryland, plus <b>${sw.length}</b> statewide option${sw.length!==1?'s':''}. Tap a county above to focus on your area.`;
+      resultMeta.innerHTML = `Showing <b>${local.length}</b> local programs across Maryland, plus <b>${sw.length}</b> statewide option${sw.length!==1?'s':''}. Tap a county above to focus on your area.`;
     }
 
     let html = "";
@@ -738,21 +776,17 @@ const COUNTIES = [
       html += `<div class="grid">${local.map(localCard).join('')}</div>`;
     } else {
       html += `<div class="results-band"><h3>${activeCounty?esc(activeCounty)+' programs':'Local county programs'}</h3></div>`;
-      html += `<div class="grid"><div style="grid-column:1/-1;background:#fff;border:1px dashed var(--line);border-radius:14px;padding:30px;text-align:center;color:var(--mute);font-family:Montserrat;">No county-specific program is listed here yet — but the statewide options below may be a great fit. <a href="#contact">Ask Mike what you qualify for.</a></div></div>`;
+      html += `<div class="grid"><div style="grid-column:1/-1;background:#fff;border:1px dashed var(--line);border-radius:14px;padding:30px;text-align:center;color:var(--mute);font-family:Montserrat;">No county-specific program is listed here yet, but the statewide options below may be a great fit. <a href="#contact">Ask Mike what you qualify for.</a></div></div>`;
     }
-    if(sw.length){
-      html += `<div class="results-band results-band--sw"><h3>Available statewide — you may qualify for these too</h3></div>`;
-      html += `<div class="grid">${sw.map(swCard).join('')}</div>`;
-    }
+    html += `<div id="statewide" style="margin:46px 0 16px;">
+      <span class="eyebrow">Available anywhere in all Maryland Counties</span>
+      <h3 style="font-family:'Rift','Oswald',sans-serif; text-transform:uppercase; font-size:clamp(24px,3vw,32px); line-height:1.05; color:var(--blue); margin:6px 0 8px; letter-spacing:.01em;">Statewide &amp; lender programs</h3>
+      <p style="margin:0; color:var(--mute); font-family:'Montserrat'; font-size:15px; max-width:64ch;">These don't depend on your county. They're available to eligible buyers across the state, including a few exclusive to First Home Mortgage.</p>
+    </div>`;
+    html += `<div class="grid">${sw.map(swCard).join('')}</div>`;
     results.innerHTML = html;
 
-    results.querySelectorAll('.link-qualify').forEach(btn=>{
-      btn.addEventListener('click',()=>{
-        document.getElementById('programField').value = btn.dataset.prog;
-        if(activeCounty) document.getElementById('lf-county').value = activeCounty;
-        document.getElementById('contact').scrollIntoView({behavior:'smooth'});
-      });
-    });
+    wireQualify(results);
   }
 
   function selectCounty(name){
@@ -769,13 +803,18 @@ const COUNTIES = [
     document.querySelectorAll('.geo').forEach(p=>p.classList.toggle('is-selected', p.getAttribute('data-county')===activeCounty && activeCounty!==""));
     formCounty.value = activeCounty || "";
     render();
+    if(activeCounty) document.getElementById('programs').scrollIntoView({behavior:'smooth'});
   });
-  searchInput.addEventListener('input', render);
-  typeFilter.addEventListener('change', render);
-  document.getElementById('clearBtn').addEventListener('click', ()=>{
-    activeCounty=""; searchInput.value=""; typeFilter.value=""; countySelect.value="";
-    document.querySelectorAll('.geo').forEach(p=>p.classList.remove('is-selected'));
-    render();
+
+  // "All programs" — clear any county filter so the full list shows, then scroll
+  document.querySelectorAll('a[href="#programs"]').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      activeCounty = "";
+      countySelect.value = "";
+      formCounty.value = "";
+      document.querySelectorAll('.geo').forEach(p=>p.classList.remove('is-selected'));
+      render();
+    });
   });
 
   const leadForm = document.getElementById('leadForm');
@@ -792,7 +831,7 @@ const COUNTIES = [
 {
   "@context":"https://schema.org",
   "@type":"FinancialService",
-  "name":"Mike Basch Mortgage Team — Maryland Down Payment Assistance",
+  "name":"Mike Basch Mortgage Team: Maryland Down Payment Assistance",
   "description":"County-by-county guide to down payment assistance and homebuyer grant programs in Maryland.",
   "url":"https://marylanddpaprograms.com/",
   "logo":"https://marylanddpaprograms.com/logo-circle.png",
