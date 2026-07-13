@@ -160,6 +160,9 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
 .tag--forgive{background:var(--gold-soft); color:var(--red-deep);}
 .tag--amount{background:#e7f1ea; color:#2C6B47;}
 .tag--sw{background:var(--gold); color:var(--blue);}
+.tag--fav{background:var(--red); color:#fff; font-weight:700; box-shadow:0 2px 8px rgba(238,108,77,.4); animation:favpulse 2.2s ease-in-out infinite;}
+@keyframes favpulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+.card--sw:has(.tag--fav){border-left-color:var(--red); box-shadow:0 0 0 2px rgba(238,108,77,.25), var(--shadow-lg);}
 .card p{font-size:14px; color:var(--mute); margin:0 0 16px; flex:1; font-family:"Montserrat";}
 .card__links{display:flex; gap:10px 14px; flex-wrap:wrap; align-items:center; margin-top:auto; padding-top:14px; border-top:1px solid var(--line);}
 .card__links a{font-size:12.5px; font-weight:600; background:none; border:none; cursor:pointer; font-family:"Montserrat"; padding:0; display:inline-flex; align-items:center; gap:6px;}
@@ -520,7 +523,7 @@ const PROGRAMS = [
   { county:"Baltimore City", name:"Buying Into Baltimore", type:"Grant", amount:"", summary:"Incentive awarded to buyers who attend a Live Baltimore event and purchase in the city.", link:"https://livebaltimore.com/resident-resources/financial-incentives/buying-into-baltimore/", video:"" },
   { county:"Baltimore City", name:"Baltimore City Employee Homeownership Program", type:"Grant", amount:"", summary:"Homebuying incentive for employees of the City of Baltimore.", link:"https://livebaltimore.com/resident-resources/financial-incentives/baltimore-city-employee-homeownership-program/", video:"" },
   { county:"Baltimore City", name:"Buy Back the Block", type:"Grant", amount:"", summary:"Targeted incentive supporting homeownership in specific Baltimore neighborhoods.", link:"https://livebaltimore.com/resident-resources/financial-incentives/buy-back-the-block/", video:"" },
-  { county:"Baltimore City", name:"CHAI Homebuyer Assistance Loan", type:"Deferred loan", amount:"", summary:"Down payment and closing-cost assistance for buyers in designated Northwest Baltimore communities, administered by CHAI.", link:"https://livebaltimore.com/resident-resources/financial-incentives/chai-homebuyer-incentive-grant/", video:"" },
+  { county:"Baltimore City", name:"CHAI Homebuyer Assistance Loan", type:"Deferred loan", amount:"", summary:"Down payment and closing-cost assistance for buyers in designated Northwest Baltimore communities, administered by CHAI.", link:"https://livebaltimore.com/resident-resources/financial-incentives/chai-homebuyer-assistance-loan/", video:"" },
   { county:"Baltimore City", name:"Central Baltimore Homebuying Incentive Program", type:"Grant", amount:"", summary:"Incentive for buyers purchasing within the Central Baltimore partnership area.", link:"https://livebaltimore.com/resident-resources/financial-incentives/central-baltimore-homebuying-incentive-program/", video:"" },
   { county:"Baltimore City", name:"Vacants to Value Booster", type:"Grant", amount:"", summary:"Incentive for buyers purchasing formerly vacant, rehabilitated homes in Baltimore City.", link:"https://livebaltimore.com/resident-resources/financial-incentives/vacants-to-value-booster/", video:"" },
 
@@ -534,8 +537,6 @@ const PROGRAMS = [
   { county:"Dorchester", name:"Healthy Homes Connect", type:"Affordable units", amount:"", summary:"Cambridge-area program offering access to affordable, move-in-ready homes (works similarly to an MPDU).", link:"https://www.choosecambridge.com/561/Healthy-Homes-Connect", video:"" },
 
   { county:"Frederick", name:"Frederick County Homebuyer Assistance Program (HBA)", type:"Deferred loan", amount:"", summary:"Down payment and closing-cost assistance for eligible Frederick County buyers.", link:"https://frederickcountymd.gov/6375/Homebuyer-Programs", video:"" },
-  { county:"Frederick", name:"City of Frederick Homebuyer Assistance Program", type:"Deferred loan", amount:"", summary:"Down payment and closing-cost help for buyers purchasing within the City of Frederick.", link:"https://www.cityoffrederickmd.gov/1590/Housing-Counseling-Office", video:"" },
-  { county:"Frederick", name:"Workforce Housing / Essential Worker Programs", type:"Workforce", amount:"", summary:"Assistance targeted to essential workers and the local workforce buying in Frederick County.", link:"https://frederickcountymd.gov/6375/Homebuyer-Programs", video:"" },
   { county:"Frederick", name:"United Way Prosperity Program: Pathway to Homeownership", type:"Counseling", amount:"", summary:"Homeownership readiness and savings pathway offered through the local United Way.", link:"https://www.unitedwayfrederick.org/homeownership", video:"" },
   { county:"Frederick", name:"Moderately Priced Dwelling Unit (MPDU) Program", type:"Affordable units", amount:"", summary:"Access to below-market-price homes for income-qualified buyers in Frederick County.", link:"https://www.frederickcountymd.gov/6377/Moderately-Priced-Dwelling-Unit", video:"" },
 
@@ -549,27 +550,24 @@ const PROGRAMS = [
   { county:"Montgomery", name:"MEDPAL Down Payment Assistance Loan", type:"Deferred loan", amount:"", summary:"Montgomery County down payment assistance loan for eligible buyers.", link:"https://mmp.maryland.gov/home-loans/montgomery-county-specialty-products", video:"" },
   { county:"Montgomery", name:"Montgomery County Homeownership Program", type:"Assistance", amount:"", summary:"County program supporting eligible first-time buyers with the path to homeownership.", link:"https://mmp.maryland.gov/home-loans/montgomery-county-specialty-products", video:"" },
   { county:"Montgomery", name:"HOC Mortgage Purchase Program", type:"Mortgage program", amount:"", summary:"Housing Opportunities Commission program offering competitive financing and assistance for Montgomery County buyers.", link:"https://www.hocmc.org/housing-opportunities/homeownership/the-mortgage-purchase-program/", video:"" },
-  { county:"Montgomery", name:"Moderately Priced Dwelling Unit (MPDU) Program", type:"Affordable units", amount:"", summary:"Montgomery County's landmark program providing below-market-price homes to income-qualified buyers.", link:"https://www.montgomerycountymd.gov/DHCA/housing/singlefamily/mpdu/programsales.html", video:"" },
+  { county:"Montgomery", name:"Moderately Priced Dwelling Unit (MPDU) Program", type:"Affordable units", amount:"", summary:"Montgomery County's landmark program providing below-market-price homes to income-qualified buyers.", link:"https://www.montgomerycountymd.gov/department-housing-community-affairs/moderately-priced-dwelling-units-mpdus/mpdu-purchase-applicants", video:"" },
   { county:"Montgomery", name:"Gaithersburg Down Payment Assistance Program", type:"Deferred loan", amount:"", summary:"Down payment assistance for buyers purchasing within the City of Gaithersburg.", link:"https://www.gaithersburgmd.gov/services/housing-services/homebuyer-assistance-loan-program", video:"" },
 
-  { county:"Prince George's", name:"Pathway to Purchase", type:"Deferred loan", amount:"", summary:"Prince George's County down payment and closing-cost assistance for eligible buyers.", link:"https://www.princegeorgescountymd.gov/business/redevelopment-authority/first-time-home-buyer-assistance-programs/pathway-to-purchase", video:"" },
+  { county:"Prince George's", name:"Pathway to Purchase", type:"Deferred loan", amount:"Up to $50,000", summary:"Prince George's County down payment and closing-cost assistance for eligible buyers.", link:"https://www.princegeorgescountymd.gov/business/redevelopment-authority/first-time-home-buyer-assistance-programs/pathway-to-purchase", video:"" },
 
   { county:"Queen Anne's", name:"Mid-Shore Board of REALTORS® (MSBR) Foundation Grant", type:"Grant", amount:"", summary:"Down payment grant for buyers in the Mid-Shore region, funded by the MSBR Foundation.", link:"https://www.msbrmd.com/down-payment-grant-program/", video:"" },
   { county:"Queen Anne's", name:"Queen Anne's County MPDU Loan Program", type:"Affordable units", amount:"", summary:"Moderately Priced Dwelling Unit loan program for income-qualified buyers in the county.", link:"https://www.qac.org/1212/Affordable-Workforce-Housing-Unit", video:"" },
-  { county:"Queen Anne's", name:"Affordable & Workforce Housing Unit Program", type:"Affordable units", amount:"", summary:"Access to affordable and workforce-priced homes for eligible Queen Anne's County buyers.", link:"https://www.qac.org/1212/Affordable-Workforce-Housing-Unit", video:"" },
+  { county:"Queen Anne's", name:"Affordable & Workforce Housing Unit Program", type:"Affordable units", amount:"Up to $50,000", summary:"Access to affordable and workforce-priced homes for eligible Queen Anne's County buyers.", link:"https://www.qac.org/1212/Affordable-Workforce-Housing-Unit", video:"" },
 
   { county:"Somerset", name:"SNHS Somerset Closing Cost Loan", type:"Deferred loan", amount:"", summary:"Closing-cost assistance loan for Somerset County buyers through Salisbury Neighborhood Housing Services.", link:"https://www.salisburynhs.org/products-and-services/home-purchase-loans/", video:"" },
 
   { county:"Talbot", name:"Mid-Shore Board of REALTORS® (MSBR) Foundation Grant", type:"Grant", amount:"", summary:"Down payment grant for buyers in the Mid-Shore region, funded by the MSBR Foundation.", link:"https://www.msbrmd.com/down-payment-grant-program/", video:"" },
-  { county:"Talbot", name:"Housing Commission of Talbot County Partner Match", type:"Employer match", amount:"", summary:"Matching assistance for eligible Talbot County buyers through the county Housing Commission.", link:"https://hctalbot.org/", video:"" },
 
   { county:"Washington", name:"Hagerstown Homeownership Initiative (HHI)", type:"Grant", amount:"", summary:"Homeownership assistance for buyers in the City of Hagerstown.", link:"https://www.hagerstownmd.org/1562/Hagerstown-Homeownership-Initiative", video:"" },
   { county:"Washington", name:"Hagerstown Home Store: CPIP Assistance", type:"Assistance", amount:"", summary:"Closing-cost and purchase-incentive assistance through the Hagerstown Home Store.", link:"https://hagerstownhomestore.org/homebuyer/", video:"" },
   { county:"Washington", name:"City of Hagerstown: CDBG Homeownership Program", type:"Grant", amount:"", summary:"CDBG-funded homeownership assistance for income-eligible Hagerstown buyers.", link:"https://www.hagerstownmd.org/1818/Homeownership-Program", video:"" },
 
-  { county:"Wicomico", name:"SNHS Wicomico Closing Cost Loan Program", type:"Deferred loan", amount:"", summary:"Closing-cost assistance loan for Wicomico County buyers through Salisbury Neighborhood Housing Services.", link:"https://www.salisburynhs.org/wicomico_clsng_loan/", video:"" },
-  { county:"Wicomico", name:"SNHS Tandem Loan (eliminates PMI)", type:"Second-lien loan", amount:"", summary:"A companion loan through SNHS structured to eliminate private mortgage insurance (PMI).", link:"https://www.salisburynhs.org/products-and-services/home-purchase-loans/", video:"" },
-  { county:"Wicomico", name:"Wicomico County: CDBG Housing Rehabilitation Program", type:"Rehab", amount:"", summary:"CDBG-funded housing rehabilitation assistance for income-eligible Wicomico County homeowners.", link:"", video:"" },
+  { county:"Wicomico", name:"SNHS Tandem Loan (eliminates PMI)", type:"Second-lien loan", amount:"Up to $45,000", summary:"A companion loan through SNHS structured to eliminate private mortgage insurance (PMI).", link:"https://www.salisburynhs.org/products-and-services/home-purchase-loans/", video:"" },
 
   { county:"Worcester", name:"SNHS Worcester Closing Cost Loan", type:"Deferred loan", amount:"", summary:"Closing-cost assistance loan for Worcester County buyers through Salisbury Neighborhood Housing Services.", link:"https://www.salisburynhs.org/worcester_clsng_loan/", video:"" }
 ];
@@ -579,7 +577,7 @@ const PROGRAMS = [
    Set star:true to give it the red "Exclusive" ribbon in the band.
    ===================================================================== */
 const STATEWIDE = [
-  { name:"Maryland Mortgage Program (MMP)", amount:"", type:"State program", summary:"Maryland's flagship homebuying program: 30-year fixed-rate mortgages paired with down payment assistance for eligible buyers statewide.", link:"https://mmp.maryland.gov/", video:"", star:false },
+  { name:"Maryland Mortgage Program (MMP)", amount:"", type:"State program", summary:"Maryland's flagship homebuying program: 30-year fixed-rate mortgages paired with down payment assistance for eligible buyers statewide. This is my go-to program for a huge range of Maryland buyers. Call or message me and I'll tell you exactly what it can do for you.", link:"https://mmp.maryland.gov/", video:"", star:true, fav:true },
   { name:"House Keys 4 Employees (HK4E)", amount:"", type:"State program", summary:"Employer-match assistance: participating Maryland employers match down payment funds for eligible employees, paired with the Maryland Mortgage Program.", link:"https://mmp.maryland.gov/home-loans/down-payment-assistance/maryland-employee-offers", video:"", star:false },
   { name:"Maryland HomeAbility Program", amount:"Up to $45,000", type:"State program", summary:"Up to $45,000 in down payment and closing-cost assistance for eligible buyers with a documented disability, or those buying with or caring for a household member who has one.", link:"https://mmp.maryland.gov/home-loans/homeability-loan", video:"", star:false },
   { name:"Maryland SmartBuy 3.0", amount:"", type:"State program", summary:"Eligible buyers can eliminate up to $25,000 in student debt, while receiving an additional $6,000 toward down payment and closing costs!", link:"https://www.youtube.com/watch?v=82KhV9i6qCk", video:"", star:false },
@@ -776,7 +774,7 @@ const COUNTIES = [
     return `<article class="card card--sw">
       <span class="card__county">Statewide</span>
       <h3>${esc(p.name)}</h3>
-      <div class="card__tags"><span class="tag tag--sw">${esc(p.type)}</span>${p.amount?`<span class="tag tag--amount">${esc(p.amount)}</span>`:''}</div>
+      <div class="card__tags"><span class="tag tag--sw">${esc(p.type)}</span>${p.fav?`<span class="tag tag--fav">★ Mike's Favorite Program</span>`:''}${p.amount?`<span class="tag tag--amount">${esc(p.amount)}</span>`:''}</div>
       <p>${esc(p.summary)}</p>
       <div class="card__links">
         ${p.link?`<a class="link-official" href="${esc(p.link)}" target="_blank" rel="noopener">Program details ↗</a>`:''}
