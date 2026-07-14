@@ -542,7 +542,7 @@ const PROGRAMS = [
 
   { county:"Harford", name:"Harford County Settlement Expense Loan Program (SELP)", type:"Deferred loan", amount:"", summary:"Helps eligible Harford County buyers with closing costs through a deferred loan.", link:"https://www.harfordcountymd.gov/3663/Settlement-Expense-Loan-Program", video:"" },
 
-  { county:"Howard", name:"Settlement Downpayment Loan Program (SDLP)", type:"Deferred loan", amount:"", summary:"Howard County program assisting eligible buyers with down payment and closing costs.", link:"https://www.howardcountymd.gov/DHCD-SDLP", video:"" },
+  { county:"Howard", name:"Settlement Downpayment Loan Program (SDLP)", type:"Deferred loan", amount:"Up to $40,000", summary:"Howard County program assisting eligible buyers with down payment and closing costs.", link:"https://www.howardcountymd.gov/DHCD-SDLP", guide:"/howard-county-sdlp/", video:"" },
   { county:"Howard", name:"Moderate Income Housing Unit (MIHU) Program", type:"Affordable units", amount:"", summary:"Offers income-qualified buyers access to below-market-price homes in Howard County.", link:"https://www.howardcountymd.gov/DHCD-MIHU-Program", video:"" },
 
   { county:"Kent", name:"Mid-Shore Board of REALTORS® (MSBR) Foundation Grant", type:"Grant", amount:"", summary:"Down payment grant for buyers in the Mid-Shore region, funded by the MSBR Foundation.", link:"https://www.msbrmd.com/down-payment-grant-program/", video:"" },
@@ -765,6 +765,7 @@ const COUNTIES = [
       ${p.amount?`<div class="card__tags"><span class="tag tag--amount">${esc(p.amount)}</span></div>`:''}
       <p>${esc(p.summary)}</p>
       <div class="card__links">
+        ${p.guide?`<a class="link-official" href="${esc(p.guide)}" style="color:var(--red-deep); font-weight:700;">Mike's full guide →</a>`:''}
         ${p.link?`<a class="link-official" href="${esc(p.link)}" target="_blank" rel="noopener">Program details ↗</a>`:''}
         ${p.video?`<a class="link-video" href="${esc(p.video)}" target="_blank" rel="noopener">▶ Watch Mike's video</a>`:''}
         <button class="link-qualify" type="button" data-prog="${esc(p.name)}">See if I qualify →</button>
