@@ -183,6 +183,8 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
 
 /* ====================  STATEWIDE FEATURE BAND  ==================== */
 .statewide .eyebrow{color:var(--green-deep);}
+#statewide{scroll-margin-top:88px;}
+#map{scroll-margin-top:70px;}
 .statewide h2{font-size:clamp(28px,3.6vw,42px); font-weight:700; color:var(--blue); margin-top:8px;}
 .statewide .sub{color:var(--mute); max-width:46em; margin:10px 0 28px; font-family:"Montserrat";}
 .feat-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(282px,1fr)); gap:18px;}
@@ -295,6 +297,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
         <p class="hero__lead">Maryland has dozens of down payment and grant programs, and most buyers never hear about them. Pick your county and see what you may qualify for.</p>
         <div class="hero__cta">
           <a href="#map" class="btn btn--red">Find programs in my county</a>
+          <a href="#statewide" class="btn btn--blue">See statewide programs</a>
           <a href="#contact" class="btn btn--ghost">Talk to Mike</a>
         </div>
         <div class="trust">
@@ -333,6 +336,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,te
             <option value="">Choose your county…</option>
           </select>
           <div class="region-list" id="regionList"></div>
+          <a href="#statewide" class="btn btn--gold" style="margin-top:18px; width:100%; justify-content:center;">See statewide programs →</a>
         </div>
       </div>
     </div>
@@ -583,7 +587,7 @@ const PROGRAMS = [
    Set star:true to give it the red "Exclusive" ribbon in the band.
    ===================================================================== */
 const STATEWIDE = [
-  { name:"First Homes for First Responders and Teachers", amount:"", type:"State program", summary:"Brand new for 2026: eligible first responders and teachers get a reduced-rate first mortgage plus 5% of the loan amount toward down payment and closing costs, as a 0% deferred second. It works like the 1st Time Advantage 5% loan, but with a lower rate for the people who serve our communities. If you protect, rescue, or teach in Maryland, ask me about this one!", link:"https://mmp.maryland.gov/home-loans/mmp-1st-time-advantage/first-homes-first-responders-and-teachers", guide:"/first-homes-for-first-responders-and-teachers/", video:"", star:true, fav:true, isNew:true },
+  { name:"First Homes for First Responders and Teachers", amount:"", type:"State program", summary:"Brand new for 2026: eligible first responders and teachers can receive down payment assistance up to $41,637 that can be applied towards both down payment and closing costs. It works like the 1st Time Advantage 5% loan, but with a lower rate for the people who serve our communities. If you protect, rescue, or teach in Maryland, ask me about this one!", link:"https://mmp.maryland.gov/home-loans/mmp-1st-time-advantage/first-homes-first-responders-and-teachers", guide:"/first-homes-for-first-responders-and-teachers/", video:"", star:true, fav:true, isNew:true },
   { name:"Maryland Mortgage Program (MMP)", amount:"", type:"State program", summary:"Maryland's flagship homebuying program: 30-year fixed-rate mortgages paired with down payment assistance for eligible buyers statewide. This is my go-to program for a huge range of Maryland buyers. Call or message me and I'll tell you exactly what it can do for you.", link:"https://mmp.maryland.gov/", video:"", star:true, fav:true },
   { name:"House Keys 4 Employees (HK4E)", amount:"", type:"State program", summary:"Employer-match assistance: participating Maryland employers match down payment funds for eligible employees, paired with the Maryland Mortgage Program.", link:"https://mmp.maryland.gov/home-loans/down-payment-assistance/maryland-employee-offers", video:"", star:false },
   { name:"Maryland HomeAbility Program", amount:"Up to $45,000", type:"State program", summary:"Up to $45,000 in down payment and closing-cost assistance for eligible buyers with a documented disability, or those buying with or caring for a household member who has one.", link:"https://mmp.maryland.gov/home-loans/homeability-loan", video:"", star:false },
